@@ -1,0 +1,52 @@
+-- Vyron Galapin
+-- Kawasaki Database in Machining
+DROP DATABASE KAWASAKI;
+CREATE DATABASE KAWASAKI;
+USE KAWASAKI;
+
+-- Table for the Department
+CREATE TABLE DEPARTMENT (
+	DepartmentName varchar(20) NOT NULL,
+	BuildingLocation varchar(20),
+	PRIMARY KEY(DepartmentName));
+
+-- Table for Employee
+-- This entity has a unary relationship
+-- This also have one to many relationship with the department
+CREATE TABLE EMPLOYEE (
+	empId int NOT NULL,
+	First varchar(20),
+	Last varchar(20),
+	Shift int(1) CHECK (Shift >= 1 AND Shift <= 3),
+	Position varchar(20) CHECK (Position = "Supervisor" OR Position = "Team Leader" OR Position = "Operator"),
+	DepartmentName varchar(20) NOT NULL,
+	SempId int,
+	PRIMARY KEY(empId),
+	FOREIGN KEY(SempId) REFERENCES EMPLOYEE(empId),
+	FOREIGN KEY(DepartmentName) REFERENCES DEPARTMENT(DepartmentName));
+
+-- Table for Line Number in each Department
+-- This is a weak entity
+-- Describe within the Department 
+CREATE TABLE LINE(
+	DepartmentNumberLine varchar(20) NOT NULL,
+	OperatedWithRobots varchar(3) DEFAULT "No",
+	DepartmentName varchar(20) NOT NULL,
+	CHECK (OperatedWithRobots = "Yes" OR OperatedWithRobots = "No"),
+	PRIMARY KEY(DepartmentNumberLine),
+	FOREIGN KEY(DepartmentName) REFERENCES DEPARTMENT(DepartmentName));
+
+-- Table for Running
+-- This is an associate entity between the many to many relationship between the Line and Employee
+CREATE TABLE RUNNING (
+	empId1 int NOT NULL,
+	empId2 int,
+	TempId int NOT NULL,
+	Model varchar(20),
+	Efficiency int(3) CHECK (Efficiency >= 0 AND Efficiency >= 100),
+	RunningDate date,
+	DepartmentLineNumber varchar(20) NOT NULL,
+	FOREIGN KEY(empId1) REFERENCES EMPLOYEE(empId),
+	FOREIGN KEY(empId2) REFERENCES EMPLOYEE(empId),
+	FOREIGN KEY(TempId) REFERENCES EMPLOYEE(empId),
+	FOREIGN KEY(DepartmentLineNumber) REFERENCES LINE(DepartmentNumberLine));
