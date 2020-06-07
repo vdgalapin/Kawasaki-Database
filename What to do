@@ -1,0 +1,28 @@
+You need XAMMP.
+You need MySQL.
+
+Move files in the right folder.
+Employees.txt
+Kawasaki.txt
+Create a file in the C then create a file name 0.
+Move the two text files.
+
+Then move the HTML and PHP files.
+Department.php
+Efficiency.php
+Employee.php
+Running.php
+KawasakiFrontPage.html
+Runnning.html
+Efficiency.html
+To Htdocs where the XAMMP files is located.
+
+Then run the txt files to the MySQL
+source c:/0/Employees.txt
+source c:/0/Kawaski.txt
+
+Start the XAMMP.
+
+Open a browswer type http://LocalHost/...
+KawasakiFrontPage is to both enter either running numbers or new employee.
+
