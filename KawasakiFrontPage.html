@@ -1,46 +1,60 @@
 <html>
-<head> <head>
+<head>
+	<title> Kawasaki Database Information </title>
+	<!--The style of the website-->
+	<style>
+		#website_title {
+			color:red;
+			/* Deletes the white space between the two line title */
+			margin-bottom:-25px;
+			/* Changes the font of the title to more thicker */
+			font-family: Impact, Charcoal, sans-serif;
+		}
+		/*Center the Form*/
+		.Form {
+			text-align: center;
+		}
+		/*Move the form to the right by 25% of the window size*/
+		.form_box {
+			margin-left: 25%;
+			border-bottom-width: 2px;
+		}
+		p:hover {
+			cursor: pointer;
+			border-style: solid;
+			border-color: black;
+			border-radius: 5px;
+			font-size: 110%;
+		}
+	</style>
+</head>
 <body>
-<form action="Employee.php" method="GET">
-<p><b>Enter Employee</b></p>
+<!--Website Title-->
+<h1 id='website_title'> <b>Kawasaki Motors Manufacturer</b> </h1>
+<h2 id='website_title'>Maryville | Power Built Here</h2>
+<br>
+
+<!--Efficiency Database Form-->
+<div class="Form"> 
+<p><b>Employee Efficiency Information</b></p>
+</div>
+<div class="form_box" style="display:none">
+<form action="Efficiency.php" method="GET">
 	<table>
 		<tr>
-			<td>Enter Employee ID <input name="empId" type="number"></td>
-		</tr>
-		<tr>
-			<td>Enter First Name <input name="First" type="text"></td>
-		</tr> 
-		<tr>
-			<td>Enter Last Name <input name="Last" type="text"></td>
-		</tr>
-		<tr>
-			<td>Enter Shift <input name="Shift" type="number" min="1" max="3"></td>
-		</tr>
-		<tr> 
-			<td>Enter Position <input name="Position" type="text" id="positions" list="positions"></td>
-				<datalist id="positions">
-					<option value="Supervisor">
-					<option value="Team Leader">
-					<option value="Operator">
-				</datalist>
-		</tr>
-		<tr>
-			<td>Enter Department Assign <input name="DepartmentName" type="text" id="Departments" list="Departments"></td>
-			<datalist id="Departments">
-				<option value="Crankshaft">
-				<option value="Camshaft">
-				<option value="Flywheel">
-				<option value="Covercase">
-			</datalist>
-		</tr>
-		<tr>
-			<td>Enter Supervisor Employee ID <input name="SempId" type="number"></td>
+			<td>Enter Employee Number <input type="number" name="empId"></td>
 		</tr>
 	</table>
-	<input type="submit" value="Enter Employee">
+	<input type="submit" value = "Enter Efficiency">
 </form>
+</div>
+
+<!--Running Database Form-->
+<div class="Form" > 
+<p><b>Enter Running</b></p>
+</div>
+<div class="form_box" style="display:none">
 <form action="Running.php" method="GET">
-	<p><b>Enter Running</b></p>
 		<table>
 			<tr>
 				<td>Enter Employee ID Number 1 <input name="empId1" type="number"></td>
@@ -90,5 +104,68 @@
 		</table>
 			<input type="submit" value="Enter Running">
 </form>
+</div>
+
+<!--Employee Database Form-->
+<div class="Form" > 
+<p><b>Enter Employee</b></p>
+</div>
+<!--The form is invisible -->
+<div class="form_box" style="display:none">
+<form action="Employee.php" method="GET">
+	<table>
+		<tr>
+			<td>Enter Employee ID <input name="empId" type="number"></td>
+		</tr>
+		<tr>
+			<td>Enter First Name <input name="First" type="text"></td>
+		</tr> 
+		<tr>
+			<td>Enter Last Name <input name="Last" type="text"></td>
+		</tr>
+		<tr>
+			<td>Enter Shift <input name="Shift" type="number" min="1" max="3"></td>
+		</tr>
+		<tr> 
+			<td>Enter Position <input name="Position" type="text" id="positions" list="positions"></td>
+				<datalist id="positions">
+					<option value="Supervisor">
+					<option value="Team Leader">
+					<option value="Operator">
+				</datalist>
+		</tr>
+		<tr>
+			<td>Enter Department Assign <input name="DepartmentName" type="text" id="Departments" list="Departments"></td>
+			<datalist id="Departments">
+				<option value="Crankshaft">
+				<option value="Camshaft">
+				<option value="Flywheel">
+				<option value="Covercase">
+			</datalist>
+		</tr>
+		<tr>
+			<td>Enter Supervisor Employee ID <input name="SempId" type="number"></td>
+		</tr>
+	</table>
+	<input type="submit" value="Enter Employee">
+</form>
+</div>
+
+<script>
+		var x = document.getElementsByClassName("Form");
+		for (var i = 0; i < x.length; i++) {
+			x[i].addEventListener("click", function() {
+			var w = this.nextElementSibling;
+			if (w.style.display === "none") {
+				w.style.display = "block"; 
+				}
+			else {
+				w.style.display = "none";
+				}
+			});
+			}
+	
+</script>
+
 </body>
 </html>

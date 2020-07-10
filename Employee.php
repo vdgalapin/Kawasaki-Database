@@ -26,6 +26,10 @@
 		echo "Employee should have an ID!";
 		exit;
 	}
+	if($SempId == "" or $SempId == " ") {
+		// If the its empty it means the its a new supervisor
+		$SempId = 'null';
+	}
 	//Establish a connection between the sql and the php
 	$connection = mysqli_connect('localhost', 'root', '', 'kawasaki');
 	//This checks if there is no connection
@@ -35,7 +39,7 @@
 		exit;
 	}
 	//This is the command for the sql
-	$query = "INSERT INTO EMPLOYEE VALUES ('".$empId."', '".$First."', '".$Last."', '".$Shift."', '".$Position."', '".$DepartmentName."', '".$SempId."')";
+	$query = "INSERT INTO EMPLOYEE VALUES (".$empId.", '".$First."', '".$Last."', ".$Shift.", '".$Position."', '".$DepartmentName."', ".$SempId.")";
 	//This will send it to the sql and get the results.
 	if (mysqli_query($connection, $query)) {
 

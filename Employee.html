@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Storing New Employee Information</title>
+</head>
+<body>
+<form action="Employee.php" method="GET">
+<p><b>Enter Employee</b></p>
+	<table>
+		<tr>
+			<td>Enter Employee ID <input name="empId" type="number"></td>
+		</tr>
+		<tr>
+			<td>Enter First Name <input name="First" type="text"></td>
+		</tr> 
+		<tr>
+			<td>Enter Last Name <input name="Last" type="text"></td>
+		</tr>
+		<tr>
+			<td>Enter Shift <input name="Shift" type="number" min="1" max="3"></td>
+		</tr>
+		<tr> 
+			<td>Enter Position <input name="Position" type="text" id="positions" list="positions"></td>
+				<datalist id="positions">
+					<option value="Supervisor">
+					<option value="Team Leader">
+					<option value="Operator">
+				</datalist>
+		</tr>
+		<tr>
+			<td>Enter Department Assign <input name="DepartmentName" type="text" id="Departments" list="Departments"></td>
+			<datalist id="Departments">
+				<option value="Crankshaft">
+				<option value="Camshaft">
+				<option value="Flywheel">
+				<option value="Covercase">
+			</datalist>
+		</tr>
+		<tr>
+			<td>Enter Supervisor Employee ID <input name="SempId" type="number"></td>
+		</tr>
+	</table>
+	<input type="submit" value="Enter Employee">
+</form>
+</body>
+</html>

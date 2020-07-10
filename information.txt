@@ -1,0 +1,24 @@
+-- Insert values to Department
+INSERT INTO DEPARTMENT VALUES('Crankshaft', 'West Building');
+
+-- Insert values to Line
+INSERT INTO LINE VALUES('Crankshaft 1', 'No', 'Crankshaft');
+INSERT INTO LINE VALUES('Crankshaft 2', 'No', 'Crankshaft');
+INSERT INTO LINE VALUES('Crankshaft 3', 'Yes', 'Crankshaft');
+
+-- Insert values to Employee
+INSERT INTO EMPLOYEE VALUES(120678, 'Rosvic', 'Galapin', 1, 'Supervisor', 'Crankshaft', null);
+INSERT INTO EMPLOYEE VALUES(090198, 'Vyron', 'Galapin', 1, 'Operator', 'Crankshaft', 120678);
+INSERT INTO EMPLOYEE VALUES(040703, 'Jag', 'Galapin', 1, 'Operator', 'Crankshaft', 120678);
+INSERT INTO EMPLOYEE VALUES(062105, 'Jewl', 'Galapin', 1, 'Operator', 'Crankshaft', 120678);
+INSERT INTO EMPLOYEE VALUES(062708, 'Vince', 'Galapin', 1, 'Operator', 'Crankshaft', 120678);
+INSERT INTO EMPLOYEE VALUES(070379, 'Julifer', 'Galapin', 1, 'Team Leader', 'Crankshaft', 120678);
+INSERT INTO EMPLOYEE VALUES(121299, 'Gianna', 'Cabural', 1, 'Team Leader', 'Crankshaft', 120678);
+
+-- Insert values to Running
+INSERT INTO RUNNING VALUES(090198, 040703, 070379, 'Kawasaki 1.0', 95, '2020-07-08', 'Crankshaft 1');
+INSERT INTO RUNNING VALUES(090198, 040703, 070379, 'Kawasaki 1.0', 80, '2020-07-09', 'Crankshaft 1');
+INSERT INTO RUNNING VALUES(062105, 062708, 070379, 'Kawasaki 2.0', 75, '2020-07-08', 'Crankshaft 2');
+INSERT INTO RUNNING VALUES(062105, 062708, 070379, 'Kawasaki 2.0', 88, '2020-07-08', 'Crankshaft 2');
+INSERT INTO RUNNING VALUES(062105, null, 121299, 'Kawasaki 1.0', 99, '2020-07-10', 'Crankshaft 3');
+INSERT INTO RUNNING VALUES(062105, null, 121299, 'Kawasaki 1.0', 95, '2020-07-11', 'Crankshaft 3');

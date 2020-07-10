@@ -19,11 +19,13 @@
 	$DepartmentLineNumber = $_GET['DepartmentLineNumber'];
 	
 	//Check the field if its empty
-	if($empId1 == " " or $TempId == " " or $Model == " " or $Efficiency == " " or $RunningDate == " " or $DepartmentLineNumber == " ") {
+	if($empId1 == "" or $TempId == "" or $Model == " " or $Efficiency == "" or $RunningDate == "" or $DepartmentLineNumber == "") {
 			echo "One of the fields is empty";
 			exit;
 	}
-	
+	if ($empId2== "" or $empId2 == " ") {
+		$empId2 = "null";
+	}
 	//Establish a connection between the sql and the php
 	$connection = mysqli_connect('localhost', 'root', '', 'kawasaki');
 

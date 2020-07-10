@@ -1,0 +1,9 @@
+DROP DATABASE Pictures;
+CREATE DATABASE Pictures;
+USE Pictures;
+
+CREATE TABLE myImages(
+	id INT,
+	image BLOB);
+
+INSERT INTO myImages VALUES(1, LOAD_FILE('C:\0\me.jpg'));
