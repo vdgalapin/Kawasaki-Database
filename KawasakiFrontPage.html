@@ -13,22 +13,37 @@
 		/*Center the Form*/
 		.Form {
 			text-align: center;
+			margin-left: 25%;
+			margin-right: 25%;
+			border: hidden gray 2px;
+			background-color: silver;
+			border-radius:5px;
+			vertical-align: middle;
+			line-height: 50px; 
 		}
+	
 		/*Move the form to the right by 25% of the window size*/
 		.form_box {
+			margin-top: 5px;
+			margin-bottom: 5px;
 			margin-left: 25%;
-			border-bottom-width: 2px;
+			margin-right: 25%;
+			border: solid black 1px;
+			border-radius: 5px;
 		}
-		p:hover {
+		.Form:hover {
 			cursor: pointer;
 			border-style: solid;
 			border-color: black;
 			border-radius: 5px;
 			font-size: 110%;
 		}
+		#submit_button {
+			margin-left: 2%;
+		}
 	</style>
 </head>
-<body>
+<body style='background-color: gainsboro'>
 <!--Website Title-->
 <h1 id='website_title'> <b>Kawasaki Motors Manufacturer</b> </h1>
 <h2 id='website_title'>Maryville | Power Built Here</h2>
@@ -36,7 +51,7 @@
 
 <!--Efficiency Database Form-->
 <div class="Form"> 
-<p><b>Employee Efficiency Information</b></p>
+<h2><b>Employee Efficiency Information</b></h2>
 </div>
 <div class="form_box" style="display:none">
 <form action="Efficiency.php" method="GET">
@@ -45,13 +60,13 @@
 			<td>Enter Employee Number <input type="number" name="empId"></td>
 		</tr>
 	</table>
-	<input type="submit" value = "Enter Efficiency">
+	<input type="submit" value = "Enter Efficiency" id="submit_button">
 </form>
 </div>
 
 <!--Running Database Form-->
 <div class="Form" > 
-<p><b>Enter Running</b></p>
+<h2><b>Enter Running</b></h2>
 </div>
 <div class="form_box" style="display:none">
 <form action="Running.php" method="GET">
@@ -102,13 +117,13 @@
 				</datalist>
 			</tr>
 		</table>
-			<input type="submit" value="Enter Running">
+			<input type="submit" value="Enter Running" id="submit_button">
 </form>
 </div>
 
 <!--Employee Database Form-->
 <div class="Form" > 
-<p><b>Enter Employee</b></p>
+<h2><b>Enter Employee</b></h2>
 </div>
 <!--The form is invisible -->
 <div class="form_box" style="display:none">
@@ -147,7 +162,7 @@
 			<td>Enter Supervisor Employee ID <input name="SempId" type="number"></td>
 		</tr>
 	</table>
-	<input type="submit" value="Enter Employee">
+	<input type="submit" value="Enter Employee" id="submit_button">
 </form>
 </div>
 
