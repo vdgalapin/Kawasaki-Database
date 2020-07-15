@@ -87,39 +87,70 @@
 	}
 	echo "</div>";
 	# The whole database info for all employees
-	$query = "SELECT empId FROM EMPLOYEE WHERE position='operator';";
+	$query = "	SELECT empId1 as empId, AVG(Efficiency) as 'Efficiency'
+				FROM RUNNING
+				WHERE empId1 > 0
+				GROUP BY empId1 
+				UNION
+				SELECT empId2, AVG(Efficiency) as 'Efficiency'
+				FROM RUNNING
+				WHERE empId2 > 0
+				GROUP BY empId2
+				ORDER BY Efficiency DESC;";
 	$results = mysqli_query($connection, $query);
 	echo "<style>
-			table, tr, th {
+			 tr {
 				padding: 20px; 
 				border: 1px solid black;
-				border-collapse: collapse;
 				width: 50%;
+				word-wrap: break-word;
 				margin-left: 50%;
 				margin-top: 0%;
 				margin-right: 2%;
-				border-radius: 5px;
 				background-color: silver;
 			
 			}
+			th {
+				padding: 20px;
+			}
 			table {
+				border-collapse: collapse;
 				position:absolute;
 				top:2%;
 				right:2%;
+				table-layout:fixed;
+				width: 50%;
+				word-wrap: break-word;
+				margin-left: 50%;
+				margin-top: 0%;
+				margin-right: 2%;
+			}
+			#me {
+				background-color: green
 			}
 			</style>";
 	echo "<table>
-			<tr><th>First</th><th>Last</th><th>Employee ID</th></tr>";
+			<tr><th>Place</th><th>First</th><th>Last</th><th>Employee ID</th></tr>";
+	# this is for the ranking increment
+	$place = 1;
 	while ($row = mysqli_fetch_array($results)) {
-			$query = "SELECT FIRST as F, LAST as L, AVG(EFFICIENCY) as Average
-						FROM EMPLOYEE, RUNNING
-						WHERE empId = ".$row['empId']." AND (empId1 = ".$row['empId']." OR empId2 = ".$row['empId'].");";
+			$query = "SELECT FIRST as F, LAST as L
+						FROM EMPLOYEE
+						WHERE empId = ".$row['empId'].";";
 			$res = mysqli_query($connection, $query);
 			$r = mysqli_fetch_array($res);
-			echo "<tr> 
-				<th>".$r['F']."</th><th>".$r['L']."</th><th>".number_format($r['Average'], 2, '.', ',')."%</th>
+			if ($row['empId'] == $empId) {
+				echo "<tr id='me'> 
+				<th>".$place."</th><th>".$r['F']."</th><th>".$r['L']."</th><th>".number_format($row['Efficiency'], 2, '.', ',')."%</th>
 				</tr>";
+			}
+			else {
+			echo "<tr> 
+				<th>".$place."</th><th>".$r['F']."</th><th>".$r['L']."</th><th>".number_format($row['Efficiency'], 2, '.', ',')."%</th>
+				</tr>";
+			}
 			echo "<br>";
+			$place++;
 	}
 	echo "</table>";
 	?>
